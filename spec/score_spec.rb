@@ -11,6 +11,6 @@ describe('String#score') do
   end
 
   it("Takes a word and returns the scrabble score") do
-    expect(("1adf").score()).to(eq("7"))
+    expect(("adf1").score()).to(eq("7"))
   end
 end

@@ -2,6 +2,7 @@ class String
   define_method(:score) do
     word_arr = self.split("")
     score = 0
+    score_pry = 0
     errors = 0
     answers=Array.new()
     output_string = ""
@@ -13,19 +14,24 @@ class String
       "JX"=>8,
       "QZ"=>10 }
 
+
+
     word_arr.each() do |letter|
+      score_pry = score
       value_of_letters.each() do |chars, value|
         if (chars.include?(letter.upcase()))
           score = score.+(value)
           break
-        else
-          errors = errors.+(1)
         end
-        #binding.pry
+  #      binding.pry
+      end
+      if(score_pry == score)
+        errors = errors.+(1)
       end
     end
     answers.push(score)
-    output_string = answers.at(0).to_s.+(answers.at(1).to_s)
+    answers.push(errors)
+    output_string = "You got ".+(answers.at(0).to_s).+(" points.").+(" You had ").+(answers.at(1).to_s).+(" invalid character(s)!")
     output_string
   end
 end
